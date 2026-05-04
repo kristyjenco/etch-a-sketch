@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Etch-a-Sketch</title>
+       <style>
+        #parent {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 512px;
+        }
+        #parent > div {
+            border: 1px solid;
+            width: 30px;
+            height: 30px;
+
+        }
+       </style>
+    </head>
+    <body>
+        <div id="parent"></div>
+        <script>
+        let parentDiv = document.getElementById("parent");
+        //need 256 divs
+        //loop with an inner loop
+        //each outer loop is column or row
+        //inner loop is row or column
+        for(i = 0; i < 16; i++) {
+            for(ii = 0; ii < 16; ii++) {
+                let newDiv = document.createElement("div");
+                newDiv.classList.add("square");
+                parentDiv.appendChild(newDiv);
+
+            }
+    }
+    </script>
+    </body>
+    
+</html>
