@@ -54,8 +54,7 @@
                 newDiv.style.backgroundColor = "white";
                 parentDiv.appendChild(newDiv);
                 newDiv.addEventListener("mouseover", () => {
-                    let opacity = window.getComputedStyle(newDiv).getPropertyValue("opacity");
-                    console.log(opacity);
+                 let opacity = window.getComputedStyle(newDiv).getPropertyValue("opacity");
                     if(opacity == "")
                     {
                         let opacity = 0.1;
@@ -82,18 +81,21 @@
                 newDiv.classList.add("square");
                 newDiv.style.width = `${size}px`;
                 newDiv.style.height = `${size}px`;
+                newDiv.style.backgroundColor = "white";
                 parentDiv.appendChild(newDiv);
-               // let opacity = 0.1;
                 newDiv.addEventListener("mouseover", () => {
                     let opacity = window.getComputedStyle(newDiv).getPropertyValue("opacity");
-                    console.log(opacity);
-                    if(opacity < 1.0)
+                    if(opacity == "")
                     {
-                        opacity += 0.1;
-                        console.log(opacity);
-                        newDiv.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+                        let opacity = 0.1;
                     }
-                    });
+                    if(opacity <= 1.0)
+                    {
+                        opacity -= 0.1;
+                        newDiv.style.opacity = opacity;
+                    }
+                
+                });
 
             }
     }
