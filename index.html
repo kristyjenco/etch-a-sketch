@@ -44,62 +44,46 @@
         <div id="parent"></div>
         <script>
         let parentDiv = document.getElementById("parent");
-        for(let i = 0; i < 16; i++) {
-            for(let ii = 0; ii < 16; ii++) {
-                let newDiv = document.createElement("div");
+        let containerSize = 512;
+        function createGrid (gridNumber = 16) {
+            parentDiv.innerHTML = "";
+            for(let i = 0; i < gridNumber * gridNumber; i++) {
+               let newDiv = document.createElement("div");
                 newDiv.classList.add("square");
-                let size = 512 / 16;
-                newDiv.style.width = `${size}px`;
-                newDiv.style.height = `${size}px`;
-                newDiv.style.backgroundColor = "white";
-                parentDiv.appendChild(newDiv);
-                newDiv.addEventListener("mouseover", () => {
-                 let opacity = window.getComputedStyle(newDiv).getPropertyValue("opacity");
-                    if(opacity == "")
-                    {
-                        let opacity = 0.1;
-                    }
-                    if(opacity <= 1.0)
-                    {
-                        opacity -= 0.1;
-                        newDiv.style.opacity = opacity;
-                    }
-                
-                });
-
-            }
-        }
-    button = document.getElementById("button");
-    button.addEventListener("click", () => {
-       let gridNumber = prompt("Enter a number greater than 1 and less than 100");
-       parentDiv.innerHTML = "";
-       let size = 512 / gridNumber;
-        // if(gridNumber >= 1 && gridNumber <= 100) {
-            for(let i = 0; i < gridNumber; i++) {
-            for(let ii = 0; ii < gridNumber; ii++) {
-                let newDiv = document.createElement("div");
-                newDiv.classList.add("square");
+                let size = containerSize / gridNumber;
                 newDiv.style.width = `${size}px`;
                 newDiv.style.height = `${size}px`;
                 newDiv.style.backgroundColor = "white";
                 parentDiv.appendChild(newDiv);
                 newDiv.addEventListener("mouseover", () => {
                     let opacity = window.getComputedStyle(newDiv).getPropertyValue("opacity");
-                    if(opacity == "")
-                    {
-                        let opacity = 0.1;
-                    }
-                    if(opacity <= 1.0)
-                    {
-                        opacity -= 0.1;
-                        newDiv.style.opacity = opacity;
-                    }
-                
-                });
-
-            }
-    }
-        // }
+                        if(opacity == "")
+                        {
+                           let opacity = 0.1;
+                        }
+                        if(opacity <= 1.0)
+                        {
+                            opacity -= 0.1;
+                            newDiv.style.opacity = opacity;
+                        }
+                    
+                    });
+                }
+        }
+        createGrid();
+    button = document.getElementById("button");
+    button.addEventListener("click", () => {
+       let input = prompt("Enter a number greater than 1 and less than 100");
+       let gridNumber = input ? input : 16;
+       let size = containerSize / gridNumber;
+        if(gridNumber >= 1 && gridNumber <= 100) {
+            createGrid(gridNumber);
+        }
+        else 
+        {
+            alert("Please choose a number between 1 and 100");
+            createGrid(16);
+        }
     })
     </script>
     </body>
